@@ -25,6 +25,10 @@ Node::Node(Node *parent, Airport *airport, Airline *airline, int stops) {
     this->airline = airline;
     this->stops = stops;
 }
+
+Node::~Node() {
+    cout << "Node destroyed";
+}
 /**
  * Node::Node(Airport *airport) {
  *     this->airport = airport;

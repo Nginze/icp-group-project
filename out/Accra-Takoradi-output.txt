@@ -3,4 +3,4 @@
 Total Flights: 1
 Total additional stops: 0
 Total Distance: Km
-Optimality criteria: Distance
+Optimality criteria: Number of Flights

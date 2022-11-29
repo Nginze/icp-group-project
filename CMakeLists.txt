@@ -11,4 +11,4 @@ add_executable(icp_individual_c__
         src/flight_path.cpp
         src/main.cpp
         src/reader.cpp
-        src/route.cpp include/airline.h include/airport.h include/flight_path.h include/node.h include/reader.h include/route.h src/node.cpp)
+        src/route.cpp include/airline.h include/airport.h include/flight_path.h include/node.h include/reader.h include/route.h src/node.cpp include/helper.h)

@@ -130,7 +130,8 @@
 				8,
 				9,
 				10,
-				11
+				11,
+				13
 			]
 		}
 	],
@@ -207,6 +208,11 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/node.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/helper.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

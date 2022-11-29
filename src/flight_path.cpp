@@ -3,7 +3,8 @@
 #include <queue>;
 #include <unordered_set>;
 #include <set>;
-#include "flight_path.h"
+#include "flight_path.h";
+#include "helper.h";
 using namespace std;
 
 
@@ -165,14 +166,15 @@ string FlightPath::getInputSrc(){
  * @return A pointer to a node.
  */
 Node* FlightPath::getFlightPath(Airport* source, Airport* destination) {
-    queue<Node *> routes_frontier;
-    routes_frontier.push(new Node(source));
-    unordered_set<string> explored;
+    deque<Node *> routes_frontier;
+    routes_frontier.push_back(new Node(source));
+    set<string> explored;
     while (!routes_frontier.empty()) {
         Node *current = routes_frontier.front();
-        routes_frontier.pop();
+        routes_frontier.pop_front();
         explored.insert(current->getAirport()->getIataCode());
         for (Route *route: getAvailableRoutes(current->getAirport())) {
+            try{
                 Airport *flight_destination = getAirportById(route->getDestinationAirportCode(),
                                                              route->getDestinationAirportId());
                 Airline *flight = getAirlineById(route->getAirlineCode(), route->getAirlineId());
@@ -181,17 +183,24 @@ Node* FlightPath::getFlightPath(Airport* source, Airport* destination) {
                     cout <<"Found route: "<< child->getAirport()->getIataCode()<<endl;
                     return child;
                 }
-                routes_frontier.push(child);
-//                if (explored.find(child->getAirport()->getIataCode()) == explored.end()) {
-//
-//                }
+                if (!frontierContains(routes_frontier, current)) {
+                    routes_frontier.push_back(child);
+                }
+            }catch(exception &e){
+                cout <<e.what() << endl;
+            }
+
         }
     }
+    for (int i = 0; i < routes_frontier.size(); ++i)
+    {
+        delete routes_frontier[i];
+    }
+
+    routes_frontier.clear();
     cout << "no routes found" <<endl;
     return NULL;
 }
-
-
 
 /**
  * It returns a pointer to an airline object if the airline_code or airline_id matches the airline_code

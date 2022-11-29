@@ -1,0 +1,8 @@
+1. AC from YWG to DEN 0 stops 
+2. AA from DEN to LHR 0 stops 
+3. AA from LHR to ACC 0 stops 
+
+Total Flights: 3
+Total additional stops: 0
+Total Distance: Km
+Optimality criteria: Number of Flights

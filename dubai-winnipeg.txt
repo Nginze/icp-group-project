@@ -1,2 +1,2 @@
-Dubai,United Arab Emirates
-Moscow,Russia
+Beijing,China
+Tokyo,Japan

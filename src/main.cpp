@@ -13,6 +13,10 @@ int main(){
     Airport* source_airport = map["source"];
     Airport* destination_airport = map["destination"];
     Node* found_destination = fp.getFlightPath(source_airport, destination_airport);
+    if(found_destination == NULL){
+        cout << "No routes found!";
+        return 0;
+    }
     stack<Node*> solution_path = found_destination->getSolutionPath();
     fp.outputDataToFile(solution_path);
     return 0;

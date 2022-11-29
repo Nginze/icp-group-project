@@ -20,6 +20,7 @@ class Node{
     public:
         Node(Node* parent, Airport* airport, Airline* airline, int stops);
         Node(Airport* airport);
+        ~Node();
         Node* getParent();
         Airport* getAirport();
         Airline* getAirline();
