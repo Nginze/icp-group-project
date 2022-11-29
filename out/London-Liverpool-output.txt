@@ -1,0 +1,7 @@
+1. FR from LTN to ACE 0 stops 
+2. FR from ACE to LPL 0 stops 
+
+Total Flights: 2
+Total additional stops: 0
+Total Distance: Km
+Optimality criteria: Number of Flights

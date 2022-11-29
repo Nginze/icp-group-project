@@ -21,9 +21,18 @@ bool frontierContains(deque<Node*> front, Node* curr_node){
 }
 
 
-bool exploredContains(set<string> explored, string current_iata_code){
-    for(string code : explored){
-        if(code == current_iata_code){
+bool exploredContains(vector<Node*> explored, Node* current_node){
+    for(auto node : explored){
+        if(node == current_node){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool blacklistContains(vector<string> blacklist, string current_code){
+    for(auto code: blacklist){
+        if(code == current_code){
             return true;
         }
     }

@@ -22,6 +22,22 @@ FlightPath::FlightPath(std::string input_src) {
     this->airlines = reader->loadAirlines();
     this->routes = reader->loadRoutes();
 }
+FlightPath::~FlightPath(){
+    delete reader;
+    for (int i = 0; i < airlines.size(); ++i)
+    {
+        delete airlines[i];
+    }
+    for (int i = 0; i < airports.size(); ++i)
+    {
+        delete airports[i];
+    }
+    for (int i = 0; i < routes.size(); ++i)
+    {
+        delete routes[i];
+    }
+
+}
 
 /**
  * It returns the source city.
@@ -168,27 +184,28 @@ string FlightPath::getInputSrc(){
 Node* FlightPath::getFlightPath(Airport* source, Airport* destination) {
     deque<Node *> routes_frontier;
     routes_frontier.push_back(new Node(source));
-    set<string> explored;
+    vector<Node*> explored;
+    vector<string> blacklist;
     while (!routes_frontier.empty()) {
         Node *current = routes_frontier.front();
         routes_frontier.pop_front();
-        explored.insert(current->getAirport()->getIataCode());
+        explored.push_back(current);
         for (Route *route: getAvailableRoutes(current->getAirport())) {
-            try{
-                Airport *flight_destination = getAirportById(route->getDestinationAirportCode(),
-                                                             route->getDestinationAirportId());
-                Airline *flight = getAirlineById(route->getAirlineCode(), route->getAirlineId());
-                Node *child = new Node(current, flight_destination, flight, route->getStops());
-                if (route->getDestinationAirportCode() == destination->getIataCode()) {
-                    cout <<"Found route: "<< child->getAirport()->getIataCode()<<endl;
-                    return child;
+                try {
+                    Airport *flight_destination = getAirportById(route->getDestinationAirportCode(),
+                                                                 route->getDestinationAirportId());
+                    Airline *flight = getAirlineById(route->getAirlineCode(), route->getAirlineId());
+                    Node *child = new Node(current, flight_destination, flight, route->getStops());
+                    if (route->getDestinationAirportCode() == destination->getIataCode()) {
+                        cout << "Found route : " << child->getAirport()->getIataCode()<<endl;
+                        return child;
+                    }
+                    if (!frontierContains(routes_frontier, child) && !exploredContains(explored, child)) {
+                        routes_frontier.push_back(child);
+                    }
+                } catch (exception &e) {
+                    cout << e.what() << endl;
                 }
-                if (!frontierContains(routes_frontier, current)) {
-                    routes_frontier.push_back(child);
-                }
-            }catch(exception &e){
-                cout <<e.what() << endl;
-            }
 
         }
     }
@@ -198,7 +215,6 @@ Node* FlightPath::getFlightPath(Airport* source, Airport* destination) {
     }
 
     routes_frontier.clear();
-    cout << "no routes found" <<endl;
     return NULL;
 }
 

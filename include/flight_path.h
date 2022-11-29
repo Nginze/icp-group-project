@@ -23,6 +23,7 @@ class FlightPath{
         Reader* reader;
     public:
         FlightPath(string input_src);
+        ~FlightPath();
         map<string, Airport*> getSourceAndDestinationAirport();
         Node* getFlightPath(Airport* source, Airport* destination);
         vector<Route*> getAvailableRoutes(Airport* airport);

@@ -1,0 +1,6 @@
+1. EK from DXB to NRT 0 stops 
+
+Total Flights: 1
+Total additional stops: 0
+Total Distance: Km
+Optimality criteria: Number of Flights

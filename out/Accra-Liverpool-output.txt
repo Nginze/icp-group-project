@@ -1,0 +1,7 @@
+1. IB from ACC to MAD 0 stops 
+2. U2 from MAD to LPL 0 stops 
+
+Total Flights: 2
+Total additional stops: 0
+Total Distance: Km
+Optimality criteria: Number of Flights
