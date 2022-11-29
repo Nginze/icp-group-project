@@ -8,6 +8,5 @@ int main(){
     Node* found_dest = fp.getFlightPath(source_airport, destination_airport);
     stack<Node*> sol_path = found_dest->getSolutionPath();
     fp.outputDataToFile(sol_path);
-
     return 0;
 }
