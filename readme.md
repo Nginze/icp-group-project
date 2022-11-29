@@ -21,7 +21,7 @@ C++ Flight Routing Application using geo data set from <a href = "https://openfl
 
 NB: Make sure `input` file is in `root` directory
 <div>
-<img src="https://res.cloudinary.com/chakra-me/image/upload/v1664663488/Screenshot_2022-10-01_223112_azkyrp.png"/>
+<img src="https://res.cloudinary.com/chakra-me/image/upload/v1669765872/Screenshot_2022-11-29_234905_bckpz1.png"/>
 </div> 
 
 2.Execute `Main.cpp` to start application
