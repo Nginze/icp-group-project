@@ -6,16 +6,31 @@
 #include <vector>;
 using namespace std;
 
+/**
+ * It opens the files and reads them into the program.
+ * 
+ * @param airport_src "airports.dat"
+ * @param airline_src "airlines.dat"
+ * @param route_src "routes.dat"
+ */
 Reader::Reader(std::string airport_src, std::string airline_src, std::string route_src) {
     airport_stream.open(airport_src);
     airline_stream.open(airline_src);
     route_stream.open(route_src);
 }
 
+/**
+ * The destructor is called when the object is destroyed
+ */
 Reader::~Reader(){
     cout<<"Reader object destroyed";
 }
 
+/**
+ * It reads in a csv file, creates a vector of strings, and then creates a vector of Airport objects.
+ * 
+ * @return A vector of Airport objects.
+ */
 vector<Airport*> Reader::loadAirports() {
     string record;
     vector<string> airport_records;
@@ -41,29 +56,18 @@ vector<Airport*> Reader::loadAirports() {
         }
         Airport* new_airport = new Airport(airport_id, airport_name, city, country, iata_code, icao_code);
         airport_objects.push_back(new_airport);
-//        cout << airport_id << " " << airport_name << " " << country << " " << iata_code << " " << icao_code<< endl;
-
-//        try{
-//            Airport new_airport(
-//                    airport[0],
-//                    airport[1],
-//                    airport[2],
-//                    airport[3],
-//                    airport[4],
-//                    airport[5]
-//                    );
-//            ret.push_back(new_airport);
-////            cout << stod(airport[6]) <<" "<< stod(airport[7])<<endl;
-//        }catch(std::exception& e){
-//            std::cout << "error converting"<<endl;
-//        }
-//        str_stream.clear();
     }
     airport_stream.close();
 
     return airport_objects;
 }
 
+/**
+ * It reads a csv file, creates a vector of strings, and then creates a vector of objects from the
+ * vector of strings
+ * 
+ * @return A vector of pointers to Airline objects.
+ */
 vector<Airline*> Reader::loadAirlines() {
     string record;
     vector<string> airline_records;
@@ -91,6 +95,11 @@ vector<Airline*> Reader::loadAirlines() {
     return airline_objects;
 }
 
+/**
+ * It reads a csv file and creates a vector of objects from the data in the file.
+ * 
+ * @return A vector of Route objects.
+ */
 vector<Route*> Reader::loadRoutes() {
     string record;
     vector<string> route_records;
@@ -105,7 +114,6 @@ vector<Route*> Reader::loadRoutes() {
         stringstream str_stream(route_records[i]);
         string  airline_id, airline_code, source_airport_code, source_airport_id,  destination_airport_code, destination_airport_id, codeshare, stops;
         while(str_stream.good()){
-//            Airline,Airline ID,Source Airport,Source Airport ID,Destination Airport,Destination Airport ID,Codeshare,Stops
             getline(str_stream, airline_code, ',');
             getline(str_stream, airline_id, ',');
             getline(str_stream, source_airport_code, ',');
@@ -132,6 +140,16 @@ vector<Route*> Reader::loadRoutes() {
 }
 
 
+/**
+ * It reads the input file and stores the source and destination city and country in the respective
+ * variables
+ * 
+ * @param input_src the path to the input file
+ * @param source_city The city of origin
+ * @param source_country "United States"
+ * @param dest_city destination city
+ * @param dest_country destination country
+ */
 void Reader::readInputSrc(string input_src,
                   string& source_city,
                   string& source_country,
@@ -162,10 +180,4 @@ void Reader::readInputSrc(string input_src,
 }
 
 
-//int main(){
-//
-//    Reader my_reader("../data/airports.csv", "../data/airlines.csv", "../data/routes.csv");
-//    my_reader.readInputSrc("../input.txt", sci, sco, dci, dco);
-//
-//    return 0;
-//}
+

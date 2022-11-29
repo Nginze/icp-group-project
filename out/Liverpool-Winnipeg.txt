@@ -1,8 +1,0 @@
-1. 4296 from LPL to AGP 0 stops 
-2. 1317 from AGP to YUL 0 stops 
-3. 330 from YUL to YWG 0 stops 
-
-Total Flights: 3
-Total additional stops: 0
-Total Distance: Km
-Optimality criteria: Distance

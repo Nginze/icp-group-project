@@ -11,20 +11,20 @@
 using namespace std;
 
 class Node{
-private:
-    Node* parent;
-    Airport* airport;
-    Airline* airline;
-    int stops;
-    double distance;
-public:
-    Node(Node* parent, Airport* airport, Airline* airline, int stops);
-    Node(Airport* airport);
-    Node* getParent();
-    Airport* getAirport();
-    Airline* getAirline();
-    double getDistance();
-    stack<Node*> getSolutionPath();
-    int getStops();
+    private:
+        Node* parent;
+        Airport* airport;
+        Airline* airline;
+        int stops;
+        double distance;
+    public:
+        Node(Node* parent, Airport* airport, Airline* airline, int stops);
+        Node(Airport* airport);
+        Node* getParent();
+        Airport* getAirport();
+        Airline* getAirline();
+        double getDistance();
+        stack<Node*> getSolutionPath();
+        int getStops();
 };
 #endif //ICP_INDIVIDUAL_C___NODE_H
