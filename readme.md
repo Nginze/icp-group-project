@@ -35,4 +35,6 @@ Output file will be generated in the `out` directory in the `root` directory
 1. `cd` into the project's root directory.
 
 ## Requirements
+version: c++ 14 
+IDE: Clion
 
