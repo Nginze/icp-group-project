@@ -114,7 +114,7 @@ Node* FlightPath::getFlightPath(Airport* source, Airport* destination) {
         }
     }
     cout << "no routes found" <<endl;
-    return nullptr;
+    return NULL;
 }
 
 
@@ -125,7 +125,7 @@ Airline* FlightPath::getAirlineById(string airline_code, string airline_id) {
             return airline;
         }
     }
-    return nullptr;
+    return NULL;
 }
 
 Airport* FlightPath::getAirportById(string airport_code, string airport_id) {
@@ -134,7 +134,7 @@ Airport* FlightPath::getAirportById(string airport_code, string airport_id) {
             return airport;
         }
     }
-    return nullptr;
+    return NULL;
 }
 vector<Route*> FlightPath::getAvailableRoutes(Airport* airport) {
     vector<Route*> availableRoutes;
@@ -149,22 +149,29 @@ vector<Route*> FlightPath::getAvailableRoutes(Airport* airport) {
 //long getDistanceInKilometers();
 void FlightPath::outputDataToFile(stack<Node*> path){
     int list_count = 0;
+    int total_flights = path.size() - 1;
+    int total_number_of_stops = 0;
     string output_src = source_city.append("-").append(destination_city).append(".txt");
     ofstream output_stream("../out/" + output_src);
     while(!path.empty()){
         Node* node = path.top();
+        total_number_of_stops += node->getStops();
         path.pop();
         if(node->getParent() != NULL){
             if(node->getAirline() != NULL){
-                output_stream << list_count << ". " <<  node->getAirline()->getAirlineId() << " from " <<  node->getParent()->getAirport()->getIataCode() << " to " <<  node->getAirport()->getIataCode() << "\n";
+                output_stream << list_count << ". " <<  node->getAirline()->getAirlineId() << " from " <<  node->getParent()->getAirport()->getIataCode() << " to " <<  node->getAirport()->getIataCode()  << " " << node->getStops() <<  " stops " << "\n";
             }else{
-                output_stream << list_count << ". " << "N/A"<< " from " << node->getParent()->getAirport()->getIataCode() << " to " << node->getAirport()->getIataCode() << " " << node->getStops() + " stops " << "\n";
+                output_stream << list_count << ". " << "N/A"<< " from " << node->getParent()->getAirport()->getIataCode() << " to " << node->getAirport()->getIataCode() << " " << node->getStops() + " stops "  << "\n";
             }
         }
 
         list_count += 1;
 
     }
+    output_stream << "\n" << "Total Flights: " << total_flights <<  "\n";
+    output_stream << "Total additional stops: " <<total_number_of_stops << "\n";
+    output_stream << "Total Distance: " << "Km" << "\n";
+    output_stream << "Optimality criteria: Distance";
     output_stream.close();
 }
 
