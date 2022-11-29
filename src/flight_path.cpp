@@ -275,7 +275,7 @@ void FlightPath::outputDataToFile(stack<Node*> path){
     output_stream << "\n" << "Total Flights: " << total_flights <<  "\n";
     output_stream << "Total additional stops: " << total_number_of_stops << "\n";
     output_stream << "Total Distance: " << "Km" << "\n";
-    output_stream << "Optimality criteria: Distance";
+    output_stream << "Optimality criteria: Number of Flights";
     output_stream.close();
 }
 

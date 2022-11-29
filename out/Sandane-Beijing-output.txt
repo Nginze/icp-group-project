@@ -1,0 +1,8 @@
+1. WF from SDN to OSL 0 stops 
+2. AA from OSL to LHR 0 stops 
+3. BA from LHR to PEK 0 stops 
+
+Total Flights: 3
+Total additional stops: 0
+Total Distance: Km
+Optimality criteria: Distance
