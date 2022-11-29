@@ -1,7 +1,7 @@
 
 # ICP-Group-Project
 
-Java Flight Routing Application using geo data set from <a href = "https://openflights.org/data.html.">openflights.org</a>
+C++ Flight Routing Application using geo data set from <a href = "https://openflights.org/data.html.">openflights.org</a>
 
 ## Instructions
 
